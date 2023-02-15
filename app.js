@@ -18,7 +18,7 @@ const giveaway = document.querySelector(".giveaway");
 const deadline = document.querySelector(".deadline");
 const items = document.querySelectorAll(".deadline-format h4");
 
-let futureDate = new Date(2023, 4, 24, 11, 30, 0);
+let futureDate = new Date(2023, 1, 24, 11, 30, 0);
 
 const year = futureDate.getFullYear();
 const hour = futureDate.getHours();
@@ -31,12 +31,29 @@ giveaway.textContent = `giveaway end on ${weekdays[weekday]}, ${date} ${months[m
 
 //futer time in ms
 const futureTime = futureDate.getTime();
-console.log(futureTime);
+console.log({ futureTime });
 
 const getRemainingTime = () => {
   const today = new Date().getTime();
   const t = futureTime - today;
-  console.log(t);
+  console.log({ t });
+  // 1s = 1000ms
+  // 1m = 60s
+  // 1hr = 60m
+  // 1d = 24hr
+
+  // values in ms
+  const oneDay = 24 * 60 * 60 * 1000;
+  const oneHour = 60 * 60 * 1000;
+  const oneMinute = 60 * 1000;
+  console.log({ oneDay });
+
+  let days = Math.floor(t / oneDay);
+  console.log({ days });
+  let hours = Math.floor((t % oneDay) / oneHour);
+  console.log({ hours });
+  let minutes = Math.floor((t % oneHour) / oneMinute);
+  console.log({ minutes });
 };
 
 getRemainingTime();
