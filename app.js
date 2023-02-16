@@ -46,14 +46,18 @@ const getRemainingTime = () => {
   const oneDay = 24 * 60 * 60 * 1000;
   const oneHour = 60 * 60 * 1000;
   const oneMinute = 60 * 1000;
-  console.log({ oneDay });
 
   let days = Math.floor(t / oneDay);
-  console.log({ days });
   let hours = Math.floor((t % oneDay) / oneHour);
-  console.log({ hours });
   let minutes = Math.floor((t % oneHour) / oneMinute);
-  console.log({ minutes });
+  let seconds = Math.floor((t % oneMinute) / 1000);
+
+  const values = [days, hours, minutes, seconds];
+
+  items.forEach((item, index) => {
+    item.innerHTML = values[index];
+    console.log(item);
+  });
 };
 
 getRemainingTime();
